@@ -1,7 +1,7 @@
-from flask_sqlalchemy import SQLAlchemy, Model
+from flask_sqlalchemy import SQLAlchemy, model
 
 
-class CRUDMixin(Model):
+class CRUDMixin(model.Model):
     """Mixin that adds convenience methods for CRUD (create, read, update, delete) operations."""
 
     @classmethod

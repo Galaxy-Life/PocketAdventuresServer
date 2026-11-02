@@ -4,69 +4,73 @@ import random
 from hashlib import md5
 from datetime import datetime, timedelta
 
+import os
+from pathlib import Path
+
+p = Path(__file__).parents[0]
+
 
 def load_json(path):
     with open(path) as f:
         return json.load(f)
 
-
-npcs_info = load_json('utils/npcs_info.json')
-items_time = load_json('utils/time_items.json')
-items_energy = load_json('utils/energy_items.json')
-social_items = load_json('utils/social_items.json')
-protection_times = load_json('utils/protection_times.json')
-silos_ressources = load_json('utils/silos_ressources.json')
-crafting_rewards = load_json('utils/crafting_rewards.json')
-alliance_powerups = load_json('utils/alliance_powerups.json')
-use_action_reward = load_json('utils/use_action_reward.json')
-default_player_items = load_json('utils/default_player_items.json')
-minimum_level_attack = load_json('utils/minimum_level_attack.json')
-missions_targets_size = load_json('utils/missions_targets_size.json')
+npcs_info = load_json(os.path.join(p , "npcs_info.json"))
+items_time = load_json(os.path.join(p , "time_items.json"))
+items_energy = load_json(os.path.join(p , "energy_items.json"))
+social_items = load_json(os.path.join(p , "social_items.json"))
+protection_times = load_json(os.path.join(p , "protection_times.json"))
+silos_ressources = load_json(os.path.join(p , "silos_ressources.json"))
+crafting_rewards = load_json(os.path.join(p , "crafting_rewards.json"))
+alliance_powerups = load_json(os.path.join(p , "alliance_powerups.json"))
+use_action_reward = load_json(os.path.join(p , "use_action_reward.json"))
+default_player_items = load_json(os.path.join(p , "default_player_items.json"))
+minimum_level_attack = load_json(os.path.join(p , "minimum_level_attack.json"))
+missions_targets_size = load_json(os.path.join(p , "missions_targets_size.json"))
 
 
 default_colonies_items = {
-    0: load_json('utils/colonies_default_items/blue_planet.json'),
-    1: load_json('utils/colonies_default_items/green_planet.json'),
-    2: load_json('utils/colonies_default_items/purple_planet.json'),
-    3: load_json('utils/colonies_default_items/white_planet.json'),
-    4: load_json('utils/colonies_default_items/red_planet.json'),
-    5: load_json('utils/colonies_default_items/yellow_planet.json')
+    0: load_json(os.path.join(p, "colonies_default_items", 'blue_planet.json')),
+    1: load_json(os.path.join(p, "colonies_default_items", 'green_planet.json')),
+    2: load_json(os.path.join(p, "colonies_default_items", 'purple_planet.json')),
+    3: load_json(os.path.join(p, "colonies_default_items", 'white_planet.json')),
+    4: load_json(os.path.join(p, "colonies_default_items", 'red_planet.json')),
+    5: load_json(os.path.join(p, "colonies_default_items", 'yellow_planet.json'))
 }
 
 
 npc_bases = {
     'npc_A': {
-        1: load_json('utils/npcs/universe_npc_A0.json')
+        1: load_json(os.path.join(p, "npcs", 'universe_npc_A0.json'))
     },
     'npc_B': {
-        1: load_json('utils/npcs/universe_npc_B0.json'),
-        2: load_json('utils/npcs/universe_npc_B1.json'),
-        3: load_json('utils/npcs/universe_npc_B2.json'),
-        4: load_json('utils/npcs/universe_npc_B3.json'),
-        5: load_json('utils/npcs/universe_npc_B4.json'),
-        6: load_json('utils/npcs/universe_npc_B5.json'),
-        7: load_json('utils/npcs/universe_npc_B6.json'),
-        8: load_json('utils/npcs/universe_npc_B7.json'),
-        9: load_json('utils/npcs/universe_npc_B8.json'),
-        10: load_json('utils/npcs/universe_npc_B9.json')
+        1: load_json(os.path.join(p, "npcs", 'universe_npc_B0.json')),
+        2: load_json(os.path.join(p, "npcs", 'universe_npc_B1.json')),
+        3: load_json(os.path.join(p, "npcs", 'universe_npc_B2.json')),
+        4: load_json(os.path.join(p, "npcs", 'universe_npc_B3.json')),
+        5: load_json(os.path.join(p, "npcs", 'universe_npc_B4.json')),
+        6: load_json(os.path.join(p, "npcs", 'universe_npc_B5.json')),
+        7: load_json(os.path.join(p, "npcs", 'universe_npc_B6.json')),
+        8: load_json(os.path.join(p, "npcs", 'universe_npc_B7.json')),
+        9: load_json(os.path.join(p, "npcs", 'universe_npc_B8.json')),
+        10: load_json(os.path.join(p, "npcs", 'universe_npc_B9.json'))
     },
     'npc_C': {
-        1: load_json('utils/npcs/universe_npc_C0.json'),
-        2: load_json('utils/npcs/universe_npc_C1.json'),
-        3: load_json('utils/npcs/universe_npc_C2.json'),
-        4: load_json('utils/npcs/universe_npc_C3.json'),
-        5: load_json('utils/npcs/universe_npc_C4.json'),
-        6: load_json('utils/npcs/universe_npc_C5.json'),
-        7: load_json('utils/npcs/universe_npc_C6.json'),
-        8: load_json('utils/npcs/universe_npc_C7.json'),
-        9: load_json('utils/npcs/universe_npc_C8.json'),
-        10: load_json('utils/npcs/universe_npc_C9.json')
+        1: load_json(os.path.join(p, "npcs", 'universe_npc_C0.json')),
+        2: load_json(os.path.join(p, "npcs", 'universe_npc_C1.json')),
+        3: load_json(os.path.join(p, "npcs", 'universe_npc_C2.json')),
+        4: load_json(os.path.join(p, "npcs", 'universe_npc_C3.json')),
+        5: load_json(os.path.join(p, "npcs", 'universe_npc_C4.json')),
+        6: load_json(os.path.join(p, "npcs", 'universe_npc_C5.json')),
+        7: load_json(os.path.join(p, "npcs", 'universe_npc_C6.json')),
+        8: load_json(os.path.join(p, "npcs", 'universe_npc_C7.json')),
+        9: load_json(os.path.join(p, "npcs", 'universe_npc_C8.json')),
+        10: load_json(os.path.join(p, "npcs", 'universe_npc_C9.json'))
     },
     'npc_D': {
-        1: load_json('utils/npcs/universe_npc_D0.json'),
-        2: load_json('utils/npcs/universe_npc_D1.json'),
-        3: load_json('utils/npcs/universe_npc_D2.json'),
-        4: load_json('utils/npcs/universe_npc_D3.json')
+        1: load_json(os.path.join(p, "npcs", 'universe_npc_D0.json')),
+        2: load_json(os.path.join(p, "npcs", 'universe_npc_D1.json')),
+        3: load_json(os.path.join(p, "npcs", 'universe_npc_D2.json')),
+        4: load_json(os.path.join(p, "npcs", 'universe_npc_D3.json'))
     }
 }
 

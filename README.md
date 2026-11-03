@@ -29,7 +29,7 @@ Either run it using:
 Or setup the backend using a WSGI server if you are running it in prod
 
 ## Connecting the app
-Now we the server running, we still need to modify the app to connect to it.
+Now we got the server running, we still need to modify the app to connect to it.
 
 > [!NOTE]  
 > This part is written by Michielvde. I tried my best to make it as dummy-friendly as possible, but if you have questions or if I made a mistake: please contact me directly via the Discord server :​)

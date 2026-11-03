@@ -1,3 +1,6 @@
+import os
 class Config:
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///database/database.db'
+
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    SQLALCHEMY_DATABASE_URI = "sqlite:///"+os.path.join(basedir, "database", "database.db")
     SQLALCHEMY_TRACK_MODIFICATIONS = True

@@ -1,15 +1,15 @@
 __all__ = []
 
-import pkgutil
+import importlib
 import inspect
+import pkgutil
 
+for _, name, _ in pkgutil.iter_modules(__path__):
+    module = importlib.import_module(f".{name}", __name__)
 
-for loader, name, is_pkg in pkgutil.walk_packages(__path__):
-    module = loader.find_module(name).load_module(name)
-
-    for _name, value in inspect.getmembers(module):
-        if _name.startswith('__'):
+    for name, value in inspect.getmembers(module):
+        if name.startswith('__'):
             continue
 
-        globals()[_name] = value
-        __all__.append(_name)
+        globals()[name] = value
+        __all__.append(name)

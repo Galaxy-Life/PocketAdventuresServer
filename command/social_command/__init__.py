@@ -1,10 +1,11 @@
 __all__ = []
 
+import importlib
 import inspect
 import pkgutil
 
-for loader, name, is_pkg in pkgutil.walk_packages(__path__):
-    module = loader.find_spec(name).loader.load_module(name)
+for _, name, _ in pkgutil.iter_modules(__path__):
+    module = importlib.import_module(f".{name}", __name__)
 
     for name, value in inspect.getmembers(module):
         if name.startswith('__'):
